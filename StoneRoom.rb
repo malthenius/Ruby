@@ -1,9 +1,10 @@
 class StoneRoom
 
 $rubyTrapDisabled = false
+$winCondition = false
 
 def stoneRoomDescription()
-	puts "\nYou stand in a large hallway lined with dust-covered, stone tombs.  The air is thick with the smell of mold and the stuffiness of long neglect.\n"
+	puts "\nYou stand in a large room lined with dust-covered, stone tombs.  The air is thick with the smell of mold and the stuffiness of long neglect.\n"
 	puts "\nCommands:"
 	puts "look around, leave, kick tomb, inspect tombs, nevermind"
 	
@@ -11,7 +12,7 @@ def stoneRoomDescription()
 	game = Game.new()
 	game.prompt; nextMove = gets.chomp
 	
-	if nextMove ==  "look around" 
+	if nextMove ==  "look around" and $winCondition == false
 		puts "\nAt the far end of the room, you see something perched on top of an altar.\n"
 		puts "\nCommands:"
 		puts "inspect altar, nevermind"
@@ -26,7 +27,10 @@ def stoneRoomDescription()
 			else
 				game.notAnOption()
 			end
-			
+	
+	elsif nextMove ==  "look around" and $winCondition == true
+	stoneRoomDescription()
+	
 	elsif nextMove ==  "leave"
 		startRoom()
 	
@@ -125,10 +129,11 @@ def rubyAltarDisabledDescription()
 	game.prompt; nextMove = gets.chomp
 	
 	if nextMove == "take ruby"
+		$winCondition = true
 		puts "You place the giant ruby into your backpack."
 		puts "\nCommands:"
 		puts "leave"
-		$winCondition = true
+		
 	elsif nextMove == "leave"
 		stoneRoomDescription()
 	else
