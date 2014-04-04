@@ -5,12 +5,7 @@ $game = Game.new()
 $notAnOption = "That isn't an option right now."
 $winCondition = false
 $gameOver = "\nG A M E  O V E R\n"
-$youWon = "
- \ \   / /                    
-  \ \_/ /__  _   _  __      _____  _ __ | |
-   \   / _ \| | | | \ \ /\ / / _ \| '_ \| |
-    | | (_) | |_| |  \ V  V / (_) | | | |_|
-    |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_)"
+$youWon = "YOU WON!"
 
 def start()
 		puts "------WELCOME TO THE TEMPLE OF TRIALS!------\n"
