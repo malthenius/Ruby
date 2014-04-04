@@ -1,57 +1,57 @@
 class Game
-# UPDATE ROOMS TO REFLECT RUBY IS TAKEN
-# UPDATE ROOMS TO REFLECT ZOMBIES DISTURBED?
 require_relative 'StoneRoom'
-require_relative 'Monsters'
+
+$game = Game.new()
+$notAnOption = "That isn't an option right now."
 $winCondition = false
+$gameOver = "\nG A M E  O V E R\n"
+$youWon = "
+ \ \   / /                    
+  \ \_/ /__  _   _  __      _____  _ __ | |
+   \   / _ \| | | | \ \ /\ / / _ \| '_ \| |
+    | | (_) | |_| |  \ V  V / (_) | | | |_|
+    |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_)"
+
+def start()
+		puts "------WELCOME TO THE TEMPLE OF TRIALS!------\n"
+		puts "\nYou are an apprentice thief."
+		puts "You are tasked with surviving the traps"
+		puts "of this temple and retrieving something of"
+		puts "value to prove your worthiness to your guild mates."
+		puts "You see a stone door in front of you."
+		puts "\nCommands:"
+		puts "open stone door, leave"
+		
+		while true
+		prompt; nextMove = gets.chomp()
+		
+			if nextMove == "open stone door"
+				$stoneRoom.stoneRoomDescription()
+			elsif nextMove == "leave"
+				guildDeath()
+				Process.exit(0)
+			elsif nextMove == "quit"
+				quit()
+			else
+				puts $notAnOption
+			end
+		end
+	 end
 
 	def guildDeath()
 		if $winCondition == false
-			puts "\nStepping outside of the temple you are cut down by the blades of senior thieves guild members for cowardice.\n"
-		else puts "\nStepping outside, you are welcomed with open arms by your brothers an sisters of the thieves guild.  You've won!"
+			puts "\nStepping outside of the temple you are cut down by the blades"
+			puts "of senior thieves guild members for cowardice.\n"
+			puts $gameOver
+		else puts "\nStepping outside, you are welcomed with open arms by your"
+			puts "brothers an sisters of the thieves guild."
+			puts $youWon
 		end
-	end
-
-	def notAnOption()
-		puts "That isn't an option right now."
 	end
 
 	def prompt()
 		print ">"
 	end
-
-	def start()
-		puts "------WELCOME TO THE TEMPLE OF TRIALS!------\n"
-		puts "\nType quit to exit the game.\n"
-		puts "\nYou are an apprentice thief."
-		puts "You are tasked with thwarting the threats within this temple."
-		puts "You see a stone door in front of you."
-		puts "\nCommands:"
-		puts "open stone door, leave"
-
-		while true
-		prompt; nextMove = gets.chomp()
-
-			if nextMove == "open stone door"
-				stoneRoom = StoneRoom.new()
-				stoneRoom.stoneRoomDescription()
-			elsif nextMove == "leave"
-				game = Game.new()
-				puts game.guildDeath
-				Process.exit(0)
-			elsif nextMove == "quit"
-				quit()
-			else
-				game = Game.new()
-				puts game.notAnOption()
-			end
-		end
-	 end
-	 
-	 def quit()
-		puts "Goodbye!"
-		Process.exit(0)
-	 end
-	end
+end
 game = Game.new()
 game.start()
