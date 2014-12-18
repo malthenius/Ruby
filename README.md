@@ -4,4 +4,4 @@ Ruby
 Temple of Trials
 ----------------
 
-A work in progress text game to build upon as I learn more about Ruby.
+A text-based game of choice. Navigate through the Temple of Trials, steal the treasure, and escape to be initiated into a prominent Thieves Guild.
